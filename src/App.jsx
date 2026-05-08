@@ -1,26 +1,32 @@
 import { useEffect, useState } from 'react';
-import { getUsers } from './services/userService';
+import { getPost } from './services/userService';
 
 function App() {
-  const [users, setUsers] = useState([]);
+ const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    // Servicedan ma'lumotni olish
-    getUsers().then(data => {
-      setUsers(data);
-    });
-  }, []);
+async function fechtdata() {
+  let res = await getPost();
+  setPosts(res.data);
+}
 
-  return (
-    <div>
-      <h1>Foydalanuvchilar</h1>
-      <ul>
-        {users.map(user => (
-          <h2 key={user.id}>{user.name}</h2>
-        ))}
-      </ul>
-    </div>
-  );
+useEffect(() => {
+  fechtdata();
+}, [])
+
+console.log(posts);
+
+  return <>
+  {
+    posts.map((post)=>{
+      return <div>
+        <ol key={post.id} style={{ listStyleType: 'none',  border: "1px solid black", padding: "10px", margin: "10px" }}>
+          <li>{post.title}</li>
+          <li>{post.body}</li>
+        </ol>
+      </div>
+    })
+  }
+  </>
 }
 
 export default App;
