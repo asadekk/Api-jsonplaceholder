@@ -1,8 +1,10 @@
 import React from 'react'
 
-function button() {
+function button(props) {
   return (
-    <div>button</div>
+   <div>
+    <button type='delete'>{props.title}</button>
+   </div>
   )
 }
 
