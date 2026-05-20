@@ -1,4 +1,5 @@
-
+import React from 'react'
+import DataTable from './DataTable';
 interface PostCartProps {
   post: {
     title: string;
@@ -9,9 +10,11 @@ function PostCart(props: PostCartProps) {
     const {post} = props;
     
   return (
-    <div>
-      <h2>{post?.title}</h2>
-      <p>{post?.body}</p>
+    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+      <div style={{border:"1px solid black", margin:"10px", padding:"10px"}}>
+      <h2 style={{fontFamily: "  sans-serif"}}>{post?.title}</h2>
+      <p style={{fontSize:"22px", color: "green",fontFamily: "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"}}>{post?.body}</p>
+    </div>
     </div>
   )
 }
