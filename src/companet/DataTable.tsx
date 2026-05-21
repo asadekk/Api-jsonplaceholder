@@ -13,15 +13,14 @@ interface DataTableProps {
 }
 
 function DataTable(props: DataTableProps) {
-  console.log('columns:', props.columns)
-  console.log('data:', props.data)
+
   return (
     <div>
       <table border={1}>
         <thead>
           <tr>
             {props.columns.map((column)=>{
-              return <th key={String(column.key)}>{column.name}</th>
+              return <th>{column.name}</th>
             })}
           </tr>
         </thead>
@@ -29,7 +28,7 @@ function DataTable(props: DataTableProps) {
           {props.data.map((row)=>{
             return <tr key={row.id}>
               {props.columns.map((column)=>{  
-                return <td key={String(column.key)}>{row[column.key]}</td>
+                return <td>{row[column.key]}</td>
               })}
             </tr>
           })}
