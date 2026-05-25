@@ -1,37 +1,47 @@
 import React from 'react'
 
-interface DataRow {
-  id: number
-  name: string
-  role: string
-  salary: string
+interface Columns{
+  key:string,
+  name:string
 }
 
-interface DataTableProps {
-  columns: { name: string; key: keyof DataRow }[];
-  data: DataRow[];
+interface Props<T>{
+  columns: Columns[],
+  data: T[]
 }
-
-function DataTable(props: DataTableProps) {
+function DataTable<T>({data,columns}:Props<T>) {
+console.log(data,columns);
 
   return (
     <div>
+      <h1>ONE</h1>
       <table border={1}>
         <thead>
           <tr>
-            {props.columns.map((column)=>{
+            {
+            columns?.map((column)=>{
               return <th>{column.name}</th>
-            })}
+            })
+            }
           </tr>
         </thead>
         <tbody>
-          {props.data.map((row)=>{
-            return <tr key={row.id}>
-              {props.columns.map((column)=>{  
-                return <td>{row[column.key]}</td>
-              })}
-            </tr>
-          })}
+          {
+            data.map((d:any) =>{
+              return <tr>
+                {
+                  columns.map(c =>{
+                    return <td>
+                      {d[c.key]}
+                    </td>
+                  })
+                }
+              </tr>
+            })
+          }
+          <tr>
+            
+          </tr>
         </tbody>
       </table>
     </div>

@@ -5,8 +5,12 @@ function Layout() {
    <div>
      <div>
         <ul>
-            <li><Link to="/DataTable">DataTable</Link></li>
-            <li><Link to="/PostCart">PostCart</Link></li>
+            <li><Link to="/DataUsers">DataUsers</Link></li>
+            <li><Link to="/PostTitle">PostCart</Link></li>
+            <li><Link to="/TodoList">TodoList</Link></li>
+            <li><Link to="/Comments">Comments</Link></li>
+            <li><Link to="/Users">Users</Link></li>
+            <li><Link to="/Photos">Photos</Link></li>
         </ul>
     </div>
     <main>

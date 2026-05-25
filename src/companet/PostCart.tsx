@@ -1,19 +1,32 @@
 import React from 'react'
-import DataTable from './DataTable';
-interface PostCartProps {
-  post: {
+interface PostCart {
+  id:number;
     title: string;
     body: string;
-  };
+    userId:number
 }
-function PostCart(props: PostCartProps) {
-    const {post} = props;
+
+interface Props{
+  post: PostCart[]
+}
+
+
+
+function PostCart({post}: Props) {
+
+  
     
   return (
     <div>
       <h1>PostCart</h1>
-      <h2>{post?.title}</h2>
-      <p>{post?.body}</p>
+      {
+        post?.map((post)=>{
+          return <>
+          <h1>{post?.title}</h1>
+          <i>{post?.body}</i>
+          </>
+        })
+      }
     </div>
   )
 }
